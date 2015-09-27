@@ -36,7 +36,6 @@ echo "Warning threshold: " $warning
 
 if [ ${memu} -ge "$critical" ];
 then
- echo "exit value is 2";
  echo -e "enter email address";
  read e;
  emailAddress=$e
@@ -44,6 +43,7 @@ then
  printf "\nEmail sent. Content is the top 10 processes that consume most of the memory load.\n\n" ;
  ps aux --sort -rss | head -n 11| mail -s '${current} memory check - critical' "$emailAddress";
  #ps aux --sort -rss | head -n 11
+ echo "exit value is 2";
  exit 2;
 elif [[ ${memu} -ge "$warning" ]] && [[ ${memu} -lt "$critical" ]] ;
 then
