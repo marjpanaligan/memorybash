@@ -7,9 +7,13 @@ echo -e "enter critical threshold"
 read c
 echo -e "enter warning threshold"
 read w
- 
+#echo -e "enter email address"
+#read e
+
 declare -i critical=c
 declare -i warning=w
+#emailAddress=$e
+#current=$(date '+%Y-%m-%d %H:%M:%S')
 
 declare -i TOTAL_MEMORY=$( free | grep Mem: |awk '{print $2}')
 declare -i USED_MEMORY=$( free | grep Mem: | awk '{print $3}')
@@ -28,10 +32,11 @@ memu=${mem%.*}
 echo "Percentage: " $memu"%"
 echo "Crtical threshold: " $critical
 echo "Warning threshold: " $warning
+#echo "Email address: " $emailAddress
 
 if [ ${memu} -ge "$critical" ];
 then
- echo "Value is 2";
+ echo "exit value is 2";
  echo -e "enter email address";
  read e;
  emailAddress=$e
@@ -39,11 +44,14 @@ then
  printf "\nEmail sent. Content is the top 10 processes that consume most of the memory load.\n\n" ;
  ps aux --sort -rss | head -n 11| mail -s '${current} memory check - critical' "$emailAddress";
  #ps aux --sort -rss | head -n 11
+ exit 2;
 elif [[ ${memu} -ge "$warning" ]] && [[ ${memu} -lt "$critical" ]] ;
 then
-    echo "Value is 1";
- elif [[ ${memu} -lt "$warning" ]] || [["${memu}" == 0 ]] ; then
-     echo "Value is 0";
+  echo "exit value is 1"
+  exit 1;
+ elif [[ ${memu} -lt "$warning" ]] || [[${memu} == 0 ]] ; then
+   echo "exit value is 0";
+   exit 0;
  else
     echo "Invalid";
 
