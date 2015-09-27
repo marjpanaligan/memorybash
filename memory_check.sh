@@ -7,13 +7,9 @@ echo -e "enter critical threshold"
 read c
 echo -e "enter warning threshold"
 read w
-#echo -e "enter email address"
-#read e
-
+ 
 declare -i critical=c
 declare -i warning=w
-#emailAddress=$e
-#current=$(date '+%Y-%m-%d %H:%M:%S')
 
 declare -i TOTAL_MEMORY=$( free | grep Mem: |awk '{print $2}')
 declare -i USED_MEMORY=$( free | grep Mem: | awk '{print $3}')
