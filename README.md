@@ -1,3 +1,3 @@
 # memorybash
 note: not yet done 
-still testing script and researhing about getopts and others
+still researhing about getopts and verifying mail function
