@@ -35,7 +35,7 @@ then
     #read e;
     emailAddress=$email
        current=$(date '+%Y-%m-%d %H:%M:%S')
-       printf "\nEmail sent. Content is the top 10 processes that consume most of the memory load.\n\n" ;
+       #printf "\nEmail sent. Content is the top 10 processes that consume most of the memory load.\n\n" ;
        ps aux --sort -rss | head -n 11| mail -s '${current} memory check - critical' "$emailAddress";
     #ps aux --sort -rss | head -n 11
       echo "exit value is 2";
