@@ -35,20 +35,26 @@ then
     #read e;
     emailAddress=$email
        current=$(date '+%Y-%m-%d %H:%M:%S')
-       #printf "\nEmail sent. Content is the top 10 processes that consume most of the memory load.\n\n" ;
+       printf "\nEmail sent. Content is the top 10 processes that consume most of the memory load.\n\n" ;
        ps aux --sort -rss | head -n 11| mail -s '${current} memory check - critical' "$emailAddress";
     #ps aux --sort -rss | head -n 11
       echo "exit value is 2";
       exit 2;
 elif [[ ${memu} -ge "$warning" ]] && [[ ${memu} -lt "$critical" ]] ;
 then
-      echo "exit value is 1"
+      echo "exit value is 1";
       exit 1;
 elif [[ ${memu} -lt "$warning" ]] || [[${memu} == 0 ]] ; then
       echo "exit value is 0";
       exit 0;
 else
       echo "Invalid";
+      echo "Please indicate following arguments";
+      echo "-c for critical threshold";
+      echo "-w for warning threshold";
+      echo "-e for email address";
+      echo "example: ./memory_check2.sh -c n -w n -e email (n is number/percentage";
+
 
 fi
-shift $(($OPTIND -1))
+#shift $(($OPTIND -1))
