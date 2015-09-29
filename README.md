@@ -1,9 +1,9 @@
 # memorybash
-for memory_check.sh
-- not using getopts
-- bug: email part
-       1. do not verify if valid email was inputted
+for memory_check.sh 
+- working but not using getopts
+- issue; email part: do not verify if inputted email was valid
        
 for memory_check2.sh
-- bug: getopts part: return value when no arguments/options were indicated
-- bug: email part: do not verify if valid email was inputted
+- working but has some issues
+- issue1: email part: do not verify if inputted email was valid
+- issue2: return value when no arguments were indicated
