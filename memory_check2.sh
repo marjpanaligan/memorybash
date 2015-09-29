@@ -53,7 +53,7 @@ else
       echo "-c for critical threshold";
       echo "-w for warning threshold";
       echo "-e for email address";
-      echo "example: ./memory_check2.sh -c n -w n -e email (n is number/percentage";
+      echo "example: ./memory_check2.sh -c n -w n -e email (n is integer)";
 
 
 fi
